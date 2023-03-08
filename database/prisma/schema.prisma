@@ -12,11 +12,22 @@ datasource db {
 }
 
 model Employees {
-  EmployeeID    Int           @id
-  Name          String        @unique
-  Designation   String
-  Experience    Int
-  Employee_Type employee_type @default(Other)
+  EmployeeID         Int            @id @default(autoincrement())
+  FullName           String         @db.VarChar(100)
+  Name_With_Initials String         @db.VarChar(60)
+  DisplayName        String         @db.VarChar(50)
+  Designation        String?        @db.VarChar(50)
+  Gender             gender?
+  Date_of_Birth      DateTime?      @db.Date
+  Joined_Date        DateTime?      @db.Date
+  Salary             Decimal?       @db.Decimal(10, 2)
+  Experience         Int?
+  Employee_Type      employee_type?
+}
+
+enum gender {
+  MALE
+  FEMALE
 }
 
 enum employee_type {
