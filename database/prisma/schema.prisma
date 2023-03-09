@@ -13,15 +13,18 @@ datasource db {
 
 model Employees {
   EmployeeID         Int            @id @default(autoincrement())
-  FullName           String         @db.VarChar(100)
-  Name_With_Initials String         @db.VarChar(60)
-  DisplayName        String         @db.VarChar(50)
-  Designation        String?        @db.VarChar(50)
+  FullName           String         @db.VarChar(70)
+  Name_With_Initials String         @db.VarChar(35)
+  DisplayName        String         @db.VarChar(30)
+  Designation        String?        @db.VarChar(70)
   Gender             gender?
   Date_of_Birth      DateTime?      @db.Date
+  Email              String?        @db.VarChar(254)
+  Mobile_Number      String?        @db.VarChar(15)
   Joined_Date        DateTime?      @db.Date
   Salary             Decimal?       @db.Decimal(10, 2)
   Experience         Int?
+  Personal_Notes     String?        @db.Text
   Employee_Type      employee_type?
 }
 
