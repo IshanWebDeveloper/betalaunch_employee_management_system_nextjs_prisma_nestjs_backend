@@ -16,7 +16,6 @@ import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { EmployeeEntity } from './entities/employee.entity';
 import { PrismaClientExceptionFilter } from 'src/prisma-client-exception.filter';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { query } from 'express';
 
 @Controller('employees')
 @ApiTags('employees')
@@ -33,6 +32,11 @@ export class EmployeeController {
   @Get('empByType')
   getEmpByTypes(@Query() params: any) {
     return this.employeeService.getEmployeesByType(params.type);
+  }
+
+  @Get('empTypes')
+  getDistinctEmpTypes() {
+    return this.employeeService.getDistinctEmpTypes();
   }
 
   @Get()

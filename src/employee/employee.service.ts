@@ -1,4 +1,3 @@
-import { employee_type } from '@prisma/client';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { PrismaService } from './../prisma/prisma.service';
