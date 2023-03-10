@@ -9,12 +9,14 @@ import {
   Delete,
   ParseIntPipe,
   UseFilters,
+  Query,
 } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { EmployeeEntity } from './entities/employee.entity';
 import { PrismaClientExceptionFilter } from 'src/prisma-client-exception.filter';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
+import { query } from 'express';
 
 @Controller('employees')
 @ApiTags('employees')
@@ -28,6 +30,11 @@ export class EmployeeController {
     return this.employeeService.createEmployee(createEmployeeDto);
   }
 
+  @Get('empByType')
+  getEmpByTypes(@Query() params: any) {
+    return this.employeeService.getEmployeesByType(params.type);
+  }
+
   @Get()
   @ApiCreatedResponse({ type: EmployeeEntity, isArray: true })
   getAllEmployees() {
@@ -38,10 +45,6 @@ export class EmployeeController {
   @ApiCreatedResponse({ type: EmployeeEntity })
   getOneEmployeeById(@Param('id', ParseIntPipe) id: number) {
     return this.employeeService.getOneEmpByID(id);
-  }
-  @Get('getemployeetype')
-  getAllDistinctEmpTypes() {
-    return this.employeeService.getDistinctEmpTypes();
   }
 
   @Patch(':id')

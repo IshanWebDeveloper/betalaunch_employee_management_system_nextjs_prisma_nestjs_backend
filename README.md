@@ -25,8 +25,20 @@
 
 ## Installation
 
+1. Unzip the files.
+2. Change Directory to file location
+3. Create .env.local file
+4. Provide DATABASE_URL environment variable value. (preferably a mysql connection string)
+5. Execute following Bash commands to configure prisma.
+
 ```bash
 $ npm install
+npm npm init -y 
+npm install typescript ts-node @types/node --save-dev
+npm install prisma --save-dev
+npx prisma init
+npx prisma db push --schema=database/prisma/schema.prisma 
+
 ```
 
 ## Running the app
@@ -41,7 +53,6 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
 
 ## Support
 

@@ -1,3 +1,4 @@
+import { employee_type } from '@prisma/client';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { PrismaService } from './../prisma/prisma.service';
@@ -30,6 +31,14 @@ export class EmployeeService {
         Employee_Type: true,
       },
       distinct: ['Employee_Type'],
+    });
+  }
+
+  getEmployeesByType(emType: any) {
+    return this.prisma.employees.findMany({
+      where: {
+        Employee_Type: emType,
+      },
     });
   }
   updateByEmployeeId(id: number, updateEmployee: UpdateEmployeeDto) {
