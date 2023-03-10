@@ -41,6 +41,12 @@ npx prisma db push --schema=database/prisma/schema.prisma
 
 ```
 
+## To create Seed Data
+
+```bash
+npx ts-node database/createSeedData/script.ts 
+```
+
 ## Running the app
 
 ```bash
